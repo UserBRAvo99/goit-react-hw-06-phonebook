@@ -6,7 +6,6 @@ import shortid from 'shortid';
 import style from './contacts.module.scss';
 
 function Contacts({ contacts, filterUsers, deleteContact }) {
-  console.log(contacts);
   return (
     <ul className={style.list}>
       {contacts.map(({ userName, userNumber, id }) => {
