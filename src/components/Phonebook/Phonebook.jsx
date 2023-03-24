@@ -1,5 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+// useSelector = хук надає інформацію що відбувається в сторі
+//useDispatch = хук за допомогою якого ми звертаємось до стейту/стору та змінити данні за допомогою екшену
 
 import shortid from 'shortid';
 
@@ -19,6 +22,14 @@ const contactDefault = [
 ];
 
 function Phonebook() {
+  // const dispatch = useDispatch();
+  // const phonebook = useSelector(state => state.phonebook.contacts);
+  const [contactR, setContactsR] = useState({
+    id: shortid(),
+    userName: 'Roman B.',
+    userNumber: 7777777,
+  });
+
   const [contacts, setContacts] = useState(() => {
     return JSON.parse(window.localStorage.getItem(KEY)) || contactDefault;
   });
@@ -32,6 +43,7 @@ function Phonebook() {
     switch (name) {
       case 'name':
         setName(value);
+
         break;
       case 'number':
         setNumber(value);
@@ -68,7 +80,6 @@ function Phonebook() {
   };
 
   const deleteContactUser = event => {
-    console.log(event.currentTarget.id);
     let result = contacts.filter(
       contact => contact.id !== event.currentTarget.id
     );
