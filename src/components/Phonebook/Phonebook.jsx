@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -11,6 +11,7 @@ import Contacts from 'components/Contacts';
 import style from './phonebook.module.scss';
 import { selectContacts } from 'redux/selectors';
 import { addContacts } from 'redux/contactsSlice';
+import { fetchContacts } from 'redux/operations';
 
 function Phonebook() {
   const UserContacts = useSelector(selectContacts);
@@ -19,6 +20,10 @@ function Phonebook() {
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const handleInputChange = event => {
     const { name, value } = event.target;

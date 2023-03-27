@@ -1,14 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { fetchContacts } from './operations';
 
 export const initialState = {
-  contacts: [
-    { id: 'id-1', userName: 'Rosie Simpson', userNumber: '459-12-56' },
-    { id: 'id-2', userName: 'Hermione Kline', userNumber: '443-89-12' },
-    { id: 'id-3', userName: 'Eden Clements', userNumber: '645-17-79' },
-    { id: 'id-4', userName: 'Annie Copeland', userNumber: '227-91-26' },
-  ],
+  contacts: {
+    items: [],
+    isLoading: false,
+    error: null,
+  },
   filter: '',
 };
+
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
@@ -24,6 +25,13 @@ const contactsSlice = createSlice({
     },
     setFilterContacts(state, action) {
       state.filter = action.payload;
+    },
+  },
+  extraReducers: {
+    [fetchContacts.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.contacts.items = action.payload;
     },
   },
 });
