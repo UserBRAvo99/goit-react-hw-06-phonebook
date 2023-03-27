@@ -16,9 +16,9 @@ export const App = () => {
       }}
     >
       <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <Phonebook />
-        </PersistGate>
+        {/* <PersistGate loading={null} persistor={persistor}> */}
+        <Phonebook />
+        {/* </PersistGate> */}
       </Provider>
     </div>
   );

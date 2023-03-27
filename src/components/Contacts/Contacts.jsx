@@ -1,12 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import shortid from 'shortid';
 
 import style from './contacts.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectFilteredContacts } from 'redux/selectors';
-import { removeContacts } from 'redux/actions';
+import { removeContacts } from 'redux/contactsSlice';
 
 function Contacts() {
   const dispatch = useDispatch();

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addContacts } from 'redux/actions';
 
 import shortid from 'shortid';
 
@@ -11,6 +10,7 @@ import Contacts from 'components/Contacts';
 
 import style from './phonebook.module.scss';
 import { selectContacts } from 'redux/selectors';
+import { addContacts } from 'redux/contactsSlice';
 
 function Phonebook() {
   const UserContacts = useSelector(selectContacts);

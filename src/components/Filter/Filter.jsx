@@ -1,8 +1,8 @@
 import React from 'react';
 
 import style from './filter.module.scss';
-import { setFilterContacts } from 'redux/actions';
 import { useDispatch } from 'react-redux';
+import { setFilterContacts } from 'redux/contactsSlice';
 
 function Filter() {
   const dispatch = useDispatch();
